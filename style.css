@@ -169,6 +169,16 @@ body .container .component-container .row button:last-child:nth-child(3):hover {
   transition: var(--transiton);
 }
 
+body .copy-right{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  opacity: 0.5;
+  padding: 10px;
+  font-size: .8rem;
+}
+
 .light-body {
   background-color: var(--body-light-color);
   transition: var(--transiton);

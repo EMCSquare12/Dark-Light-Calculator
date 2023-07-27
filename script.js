@@ -5,6 +5,8 @@ $(document).ready(function () {
     const buttons = $("button");
     const body = $("body")
     const wrapper = $(".container");
+    const year = $("#year")
+    const date = new Date().getFullYear();
     let screenValue = ''
 
     //Dark and Light Mode Toggle
@@ -121,6 +123,7 @@ $(document).ready(function () {
             screen.val("Error");
         }
     }
+    year.text(date)
 });
 
 // if (screenValue.charAt(screenValue.length - 1) === $(buttons[3]).text()) {
