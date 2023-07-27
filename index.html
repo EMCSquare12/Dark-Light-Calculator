@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Design Calculator | EC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    
+    <div class="component-container">
+      <div class="switch-container">
+        <label class="switch">
+          <input id="switch" type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      
+      <input type="text" id="screen" readonly value="0">
+      <div class="row">
+        <button id="clear">C</button>
+        <button id="back-space">&leftarrow;</button>
+        <button id="percentage">%</button>
+        <button id="operation" data-divide="/">&divide;</button>
+      </div>
+
+      <div class="row">
+        <button id="number">7</button>
+        <button id="number">8</button>
+        <button id="number">9</button>
+        <button id="operation" data-times="*">&times;</button>
+      </div>
+
+      <div class="row">
+        <button id="number">4</button>
+        <button id="number">5</button>
+        <button id="number">6</button>
+        <button id="operation" data-minus="-">&minus;</button>
+      </div>
+
+      <div class="row"> 
+        <button id="number">1</button>
+        <button id="number">2</button>
+        <button id="number">3</button>
+        <button id="operation">&plus;</button>
+      </div>
+
+      <div class="row">
+        <button id="number">0</button>
+        <button id="dot">.</button>
+        <button id="equal">&equals;</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="script.js" charset="UTF-8"></script>
+</body>
+</html>

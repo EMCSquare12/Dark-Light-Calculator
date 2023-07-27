@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+:root {
+  /*Dark Theme*/
+  --body-dark-color: #474E68;
+  --wrapper-dark-color: #282A3A;
+  --button-dark-color: #3C4048;
+  --text-white: #ffffff;
+  --font-family: "Quicksand", sans-serif;
+  --font-size: 2rem;
+  --border-radius: 10px;
+  --box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  --input-size: 65px;
+  --gap: 10px;
+  --transiton: background-color 0.3s ease;
+  /*Light Theme*/
+  --text-black: #000000;
+  --body-light-color: #ffffff;
+  --wrapper-light-color: #cecece;
+  --button-light-color: #afafaf;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--body-dark-color);
+  font-family: var(--font-family);
+}
+body .container {
+  padding: 20px;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--wrapper-dark-color);
+  border-radius: var(--border-radius);
+  gap: var(--gap);
+  box-shadow: var(--box-shadow);
+}
+body .container .component-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--gap);
+}
+body .container .component-container .switch-container {
+  margin-top: -10px !important;
+  width: auto;
+}
+body .container .component-container .switch-container .switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 20px;
+  left: 120px;
+}
+body .container .component-container .switch-container .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+body .container .component-container .switch-container .switch input:checked + .slider {
+  background-color: var(--button-dark-color);
+}
+body .container .component-container .switch-container .switch input:checked + .slider::before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+body .container .component-container .switch-container .switch input:focus + .slider {
+  box-shadow: var(--box-shadow);
+}
+body .container .component-container .switch-container .switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+body .container .component-container .switch-container .switch .slider::before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #ffffff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border: 1px solid var(--button-light-color);
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+}
+body .container .component-container .switch-container .switch .round {
+  border-radius: 20px;
+}
+body .container .component-container .switch-container .switch .round::before {
+  border-radius: 50%;
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+}
+body .container .component-container input {
+  width: 290px;
+  height: var(--input-size);
+  border-radius: var(--border-radius);
+  outline: none;
+  border: none;
+  font-family: inherit;
+  font-size: var(--font-size);
+  text-align: right;
+  padding: 20px;
+  color: var(--text-white);
+  box-shadow: var(--box-shadow);
+  background-color: var(--button-dark-color);
+  margin-bottom: 20px;
+}
+body .container .component-container .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: var(--gap);
+}
+body .container .component-container .row button {
+  cursor: pointer;
+  height: var(--input-size);
+  width: var(--input-size);
+  text-align: center;
+  border-radius: var(--border-radius);
+  border: none;
+  outline: none;
+  background-color: var(--button-dark-color);
+  color: var(--text-white);
+  font-size: var(--font-size);
+  box-shadow: var(--box-shadow);
+}
+body .container .component-container .row button:hover {
+  background-color: #100F0F;
+  transition: var(--transiton) !important;
+  border: 1px solid var(--body-dark-color);
+}
+body .container .component-container .row button:last-child:nth-child(4) {
+  background-color: #FF8C32 !important;
+}
+body .container .component-container .row button:last-child:nth-child(4):hover {
+  background-color: #B20600 !important;
+  transition: var(--transiton);
+}
+body .container .component-container .row button:last-child:nth-child(3) {
+  width: 140px;
+  background-color: transparent;
+  border: 1.5px solid #FF8C32;
+}
+body .container .component-container .row button:last-child:nth-child(3):hover {
+  background-color: #000000;
+  border: 1.5px solid var(--body-dark-color);
+  transition: var(--transiton);
+}
+
+.light-body {
+  background-color: var(--body-light-color);
+  transition: var(--transiton);
+}
+
+.light-wrapper {
+  background-color: var(--wrapper-light-color) !important;
+  transition: var(--transiton);
+}
+
+.light-button {
+  background-color: var(--button-light-color) !important;
+  color: var(--text-black) !important;
+  transition: var(--transiton);
+}
+.light-button:hover {
+  background-color: #ffffff !important;
+  border: 1px solid var(--wrapper-light-color) !important;
+}
+
+.light-screen {
+  background-color: var(--button-light-color) !important;
+  color: var(--text-black) !important;
+  transition: var(--transiton);
+}
+
+.light-equal {
+  background-color: transparent !important;
+  color: var(--text-black) !important;
+  transition: var(--transiton);
+}
+.light-equal:hover {
+  background-color: #ffffff !important;
+  border: 1px solid var(--wrapper-light-color) !important;
+}
+
+.small-font {
+  font-size: 1.5rem !important;
+  -webkit-transition: 0.4s !important;
+}
