@@ -7,106 +7,6 @@ $(document).ready(function () {
     const wrapper = $(".container");
     let screenValue = ''
 
-
-    for (let i = 0; i <= buttons.length; i++) {
-        //Click Event Listener
-        $(buttons[i]).click(function () {
-            if (i >= 2 && i <= 17) {
-                screenValue += $(this).text();
-                screen.val(screenValue);
-                if (screen.val().length >= 15) {
-                    screen.addClass("small-font");
-                }
-                if (i === 3) {
-                    screen.val(screen.val().slice(0, -1));
-                    screenValue = screen.val()
-                    screenValue += $(buttons[3]).data("divide");
-                    screen.val(screenValue)
-                }
-                else if (i === 7) {
-                    screen.val(screen.val().slice(0, -1));
-                    screenValue = screen.val()
-                    screenValue += $(buttons[7]).data("times");
-                    screen.val(screenValue)
-                }
-                else if (i === 11) {
-                    screen.val(screen.val().slice(0, -1));
-                    screenValue = screen.val()
-                    screenValue += $(buttons[11]).data("minus");
-                    screen.val(screenValue)
-                }
-            }
-            else if (i === 0) {
-                screenValue = "";
-                screen.val(0);
-                screen.css({ "-webkit-transition": "0.4s" })
-                screen.removeClass("small-font");
-            }
-            else if (i === 1) {
-                screen.val(screen.val().slice(0, -1));
-                screenValue = screen.val()
-                if (screen.val() === "") {
-                    screen.val(0);
-                }
-                if (screen.val().length <= 15) {
-                    screen.css({ "-webkit-transition": "0.4s" })
-                    screen.removeClass("small-font");
-                }
-            }
-            else if (i === 18) {
-                let result;
-                try {
-                    result = eval(screen.val());
-                    screen.val(result)
-                }
-                catch (error) {
-                    screen.val("Error");
-                }
-            }
-        });
-    }
-
-    //KeyDown Event Listener
-    body.keydown(function (event) {
-        const regex = /^[0-9+*/%-]+$/;
-        if (regex.test(event.key)) {
-            screenValue += event.key;
-            screen.val(screenValue)
-            if (screen.val().length >= 15) {
-                screen.addClass("small-font");
-            }
-        }
-        else if (event.key === "Backspace") {
-            screen.val(screen.val().slice(0, -1));
-            screenValue = screen.val()
-            if (screen.val() === "") {
-                screen.val(0);
-            }
-            if (screen.val().length <= 15) {
-                screen.css({ "-webkit-transition": "0.4s" })
-                screen.removeClass("small-font");
-            }
-        }
-
-        else if (event.key === "Escape") {
-            screenValue = "";
-            screen.val(0);
-            screen.css({ "-webkit-transition": "0.4s" })
-            screen.removeClass("small-font");
-        }
-
-        else if (event.key === "Enter") {
-            let result;
-            try {
-                result = eval(screen.val());
-                screen.val(result)
-            }
-            catch (error) {
-                screen.val("Error");
-            }
-        }
-    });
-
     //Dark and Light Mode Toggle
     checkbox.change(function () {
         if ($(this).is(":checked")) {
@@ -130,6 +30,97 @@ $(document).ready(function () {
         }
     })
 
+    for (let i = 0; i <= buttons.length; i++) {
+        //Click Event Listener
+        $(buttons[i]).click(function () {
+            if (i >= 2 && i <= 17) {
+                screenValue += $(this).text();
+                screen.val(screenValue);
+                switch (i) {
+                    case 3:
+                        operator($(buttons[3]), "divide");
+                        break;
+                    case 7:
+                        operator($(buttons[7]), "times");
+                        break;
+                    case 7:
+                        operator($(buttons[11]), "minus");
+                        break;
+                }
+                if (screen.val().length >= 15) {
+                    screen.addClass("small-font");
+                }
+            }
+            switch (i) {
+                case 0:
+                    clear();
+                    break;
+                case 1:
+                    backSpace();
+                    break;
+                case 18:
+                    equalResult();
+            }
+        });
+    }
+    //KeyDown Event Listener
+    body.keydown(function (event) {
+        const regex = /^[0-9+*/%-]+$/;
+        if (regex.test(event.key)) {
+            screenValue += event.key;
+            screen.val(screenValue)
+            if (screen.val().length >= 15) {
+                screen.addClass("small-font");
+            }
+        }
+        switch (event.key) {
+            case "Backspace":
+                backSpace();
+                break;
+            case "Escape":
+                clear();
+                break;
+            case "Enter":
+                equalResult()
+                break;
+        }
+    });
+
+    function operator(button, operator) {
+        screen.val(screen.val().slice(0, -1));
+        screenValue = screen.val()
+        screenValue += button.data(operator);
+        screen.val(screenValue)
+    }
+
+    function clear() {
+        screenValue = "";
+        screen.val(0);
+        screen.css({ "-webkit-transition": "0.4s" })
+        screen.removeClass("small-font");
+    }
+
+    function backSpace() {
+        screen.val(screen.val().slice(0, -1));
+        screenValue = screen.val()
+        if (screen.val() === "") {
+            screen.val(0);
+        }
+        if (screen.val().length <= 15) {
+            screen.css({ "-webkit-transition": "0.4s" })
+            screen.removeClass("small-font");
+        }
+    }
+    function equalResult() {
+        let result;
+        try {
+            result = eval(screen.val());
+            screen.val(result)
+        }
+        catch (error) {
+            screen.val("Error");
+        }
+    }
 });
 
 // if (screenValue.charAt(screenValue.length - 1) === $(buttons[3]).text()) {
